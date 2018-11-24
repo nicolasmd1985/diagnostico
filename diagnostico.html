@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="diagnostico.css">
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+  </head>
+  <body>
+    <!-- Barra de navegacion principal -->
+    <nav class="navbar navbar-dark nav_principal" role="navigation">
+        <div class="row justify-content-center">
+          <div class="navbar-brand col-md-3" id="tematica_t">Aspecto Transversales</div>
+          <div class="navbar-brand col-md-3" id="tematica_e">Aspecto Economicas</div>
+          <div class="navbar-brand col-md-3" id="tematica_s">Aspecto Sociales</div>
+          <div class="navbar-brand col-md-3" id="tematica_a">Aspecto Ambientales</div>
+        </div>
+    </nav>
+    <!-- Instrucciones -->
+    <div class="container Instrucciones d-flex align-items-center">
+      <h1 class="text-center text-justify">Instrucciones de uso</h1>
+      <p>El auto-diagnostico cuenta con una serie de aspectos los cuales deben ser contestadas a conciencia para obtener los mejores resultados para su empresa una vez finalice todas las preguntas aparecerá un botón de finalizado donde mostrara el estado actual de su empresa</p>
+      <button type="button" name="button" class="empezar">Empezar</button>
+    </div>
+    <!-- Barra de navegacion preguntas -->
+    <nav class="navbar preguntas_trans">
+      <div class="row justify-content-center">
+        <div class="navbar-brand col-md-3 pregunta1" >Pregunta 1</div>
+        <div class="navbar-brand col-md-3 pregunta2" >Pregunta 2</div>
+      </div>
+    </nav>
+    <!-- Container transversales -->
+    <div class="container transerversal" id="p_transversales">
+      <div class="container pregunta11">
+      </div>
+      <div class="container pregunta12">
+      </div>
+    </div>
+    <script src="functions.js" charset="utf-8"></script>
+  </body>
+</html>

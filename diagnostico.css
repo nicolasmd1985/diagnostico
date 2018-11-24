@@ -1,0 +1,36 @@
+li {
+  list-style:none;
+}
+.nav_principal{
+  text-align: center;
+  margin:0px;
+  height:100%;
+}
+.navbar-brand{
+  margin:0px;
+}
+.text-center{
+  text-align: center;
+}
+.preguntas_trans{
+  text-align: center;
+  margin:0px;
+  height:100%;
+}
+.preguntas_trans .col-md-3{
+  border-style: solid;
+  border-color: transparent;
+}
+
+#tematica_t, .pregunta1, .pregunta2{
+  background-color: #dd1d44;
+}
+#tematica_e{
+  background-color: #4cc0ef;
+}
+#tematica_s{
+  background-color: #f69021;
+}
+#tematica_a{
+  background-color: #73c570;
+}
