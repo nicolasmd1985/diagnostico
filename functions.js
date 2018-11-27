@@ -8,7 +8,7 @@ $(document).ready(function() {
 })
 
 function loadScripts() {
-  var arraypreg = [0,0,0,0]
+  var arraypreg = [0,0]
   var arrayx = [0,0,0,0,0];
   //INICIO
   inicio();
@@ -65,7 +65,8 @@ function loadScripts() {
     var a = 1;
     var pre = '.pregunta';
     $('.nav_preguntas').show();
-    esconder_pregunta(1);
+    $('#p_transversales').show();
+    mostrar_pregunta(1,1);
   }
 
   function esconder(r,cp) {
@@ -90,10 +91,14 @@ function loadScripts() {
     }
   }
 
-  function esconder_pregunta(num_pregunta) {
-
+  function mostrar_pregunta(num_pregunta,aspecto) {
     var preg = '.pregunta' + num_pregunta;
+    var preg2 = '.pregunta' + aspecto + num_pregunta;
+    var p = '#p' + aspecto + num_pregunta;
+    console.log(preg2);
+    $(p).trigger('click');
     $(preg).show();
+    $(preg2).show();
   }
 
   //FUNCION CLICK
