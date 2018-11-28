@@ -1,28 +1,40 @@
-$(document).ready(function() {
-  $('.pregunta11').load('pregunta1.html',function () {
-    $('.pregunta12').load('pregunta2.html',function () {
-      loadScripts();
+jQuery(document).ready(function() {
+  jQuery('.pregunta11').load('pregunta1.html',function () {
+    jQuery('.pregunta12').load('pregunta2.html',function () {
+      jQuery('.pregunta21').load('pregunta3.html',function () {
+        jQuery('.pregunta22').load('pregunta4.html',function () {
+          jQuery('.pregunta31').load('pregunta5.html',function () {
+            jQuery('.pregunta32').load('pregunta6.html',function () {
+              jQuery('.pregunta41').load('pregunta7.html',function () {
+                jQuery('.pregunta42').load('pregunta8.html',function () {
+                  jQuery('.pregunta43').load('pregunta9.html',function () {
+                    loadScripts();
+                  });
+                });
+              });
+            });
+          });
+        });
+      });
     });
   });
 
 })
 
 function loadScripts() {
-  var arraypreg = [0,0]
+  var arrayasp = [0,0,0,0];
+  var arraypreg = [0,0,0,0,0,0,0,0,0];
   var arrayx = [0,0,0,0,0];
   //INICIO
   inicio();
   crear_preguntas();
+  esconder_todo();
+  crear_logica();
 
   function inicio() {
-    // nav de preguntass
-    $('.nav_preguntas').hide();
-    //esconde preguntas transversales
-    $('#p_transversales').hide();
-
-    $('.empezar').click(function() {
-        $('.Instrucciones').hide(function() {
-          empezar_diagnostico();
+      jQuery('.empezar').click(function() {
+        jQuery('.Instrucciones').hide(function() {
+          mostrar_pregunta(1,1);
         }
       );
     })
@@ -44,12 +56,12 @@ function loadScripts() {
     for (var i = 1; i <= 5; i++) {
       p=p+contpreg+i;
       console.log(p);
-      $(p).click(function() {
-        // $(this).css('background','azure');
+      jQuery(p).click(function() {
+        // jQuery(this).css('background','azure');
         for(var j = 0;j < arrayx.length; j++) {
-          if ($(this).index() == j){
+          if (jQuery(this).index() == j){
             arrayx[j] = 1;
-            $(this).css('background','azure');
+            jQuery(this).css('background','azure');
           }
         }
         esconder(arrayx,contpreg);
@@ -61,12 +73,29 @@ function loadScripts() {
     }
   }
 
-  function empezar_diagnostico() {
-    var a = 1;
+  function mostrar_pregunta(aspecto,num_pregunta) {
     var pre = '.pregunta';
-    $('.nav_preguntas').show();
-    $('#p_transversales').show();
-    mostrar_pregunta(1,1);
+    console.log(aspecto);
+    jQuery('.nav_preguntas').show();
+    if (aspecto == 1) {
+      jQuery('#p_transversales').show();
+    }
+    if (aspecto == 2) {
+      jQuery('#p_economicas').show();
+    }
+    if (aspecto == 3) {
+      jQuery('#p_sociales').show();
+    }
+    if (aspecto == 4) {
+      jQuery('#p_ambientales').show();
+    }
+    var preg = '.pregunta' + num_pregunta;
+    var preg2 = '.pregunta' + aspecto + num_pregunta;
+    var p = '#p'+num_pregunta+1;
+    console.log(p+''+preg+''+preg2);
+    jQuery(p).trigger('click');
+    jQuery(preg).show();
+    jQuery(preg2).show();
   }
 
   function esconder(r,cp) {
@@ -79,44 +108,92 @@ function loadScripts() {
       blankCheckbox = blankCheckbox + cp + a;
       p = p + cp  + a;
       if (r[i] == 0) {
-        $(blankCheckbox).hide();
-        $(p).show().css('background','transparent');
+        jQuery(blankCheckbox).hide();
+        jQuery(p).show().css('background','transparent');
       }
       else {
-        $(blankCheckbox).show().css('background','azure');
+        jQuery(blankCheckbox).show().css('background','azure');
       }
       // console.log(blankCheckbox+''+r[i]+''+p);
       blankCheckbox = '#blankCheckbox';
       p = '#p';
     }
   }
-
-  function mostrar_pregunta(num_pregunta,aspecto) {
-    var preg = '.pregunta' + num_pregunta;
-    var preg2 = '.pregunta' + aspecto + num_pregunta;
-    var p = '#p' + aspecto + num_pregunta;
-    console.log(preg2);
-    $(p).trigger('click');
-    $(preg).show();
-    $(preg2).show();
-  }
-
-  //FUNCION CLICK
-  $("input:checkbox").on('click', function() {
+    //FUNCION CLICK
+  jQuery("input:checkbox").on('click', function() {
     // in the handler, 'this' refers to the box clicked on
-    var $box = $(this);
-    if ($box.is(":checked")) {
+    var box = jQuery(this);
+    if (box.is(":checked")) {
     // the name of the box is retrieved using the .attr() method
     // as it is assumed and expected to be immutable
-    var group = "input:checkbox[name='" + $box.attr("name") + "']";
+    var group = "input:checkbox[name='" + box.attr("name") + "']";
     // the checked state of the group/box on the other hand will change
     // and the current value is retrieved using .prop() method
-    $(group).prop("checked", false);
-    $box.prop("checked", true);
+    jQuery(group).prop("checked", false);
+    box.prop("checked", true);
     } else {
-      $box.prop("checked", false);
+      box.prop("checked", false);
     }
   });
+
+  function esconder_todo() {
+    jQuery('.nav_preguntas').hide();
+    jQuery('#p_transversales').hide();
+    jQuery('#p_economicas').hide();
+    jQuery('#p_social').hide();
+    jQuery('#p_ambientales').hide();
+    for(var j = 1;j <= arraypreg.length; j++) {
+      for (var i = 1; i <= 2; i++) {
+        var preg = '.pregunta'+j+i;
+        jQuery(preg).hide();
+        // console.log(preg);
+        }
+    }
+  }
+
+  function crear_logica() {
+    for (var i = 1; i <= arraypreg.length; i++) {
+      var p = '.sig' + i;
+      console.log(p);
+      if (i>=1 && i<=2) {
+        jQuery(p).on('click',function () {
+          var n = jQuery(this).val();
+          var val = parseInt(n.charAt(n.length-1)) + 1;
+          console.log(this);
+          esconder_todo();
+          mostrar_pregunta(1,val);
+        });
+      }
+      if (i>=3 && i<=4) {
+        jQuery(p).on('click',function () {
+          var n = jQuery(this).val();
+          var val = parseInt(n.charAt(n.length-1)) + 1;
+          console.log(this);
+          esconder_todo();
+          mostrar_pregunta(2,val);
+        });
+      }
+      if (i>=5 && i<=6) {
+        jQuery(p).on('click',function () {
+          var n = jQuery(this).val();
+          var val = parseInt(n.charAt(n.length-1)) + 1;
+          console.log(this);
+          esconder_todo();
+          mostrar_pregunta(3,val);
+        });
+      }
+      if (i>=7 && i<=9) {
+        jQuery(p).on('click',function () {
+          var n = jQuery(this).val();
+          var val = parseInt(n.charAt(n.length-1)) + 1;
+          console.log(this);
+          esconder_todo();
+          mostrar_pregunta(4,val);
+        });
+      }
+
+    }
+  }
 
 
 }
