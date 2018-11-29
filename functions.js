@@ -1,13 +1,13 @@
 jQuery(document).ready(function() {
   jQuery('.pregunta11').load('pregunta1.html',function () {
     jQuery('.pregunta12').load('pregunta2.html',function () {
-      jQuery('.pregunta21').load('pregunta3.html',function () {
-        jQuery('.pregunta22').load('pregunta4.html',function () {
-          jQuery('.pregunta31').load('pregunta5.html',function () {
-            jQuery('.pregunta32').load('pregunta6.html',function () {
-              jQuery('.pregunta41').load('pregunta7.html',function () {
-                jQuery('.pregunta42').load('pregunta8.html',function () {
-                  jQuery('.pregunta43').load('pregunta9.html',function () {
+      jQuery('.pregunta23').load('pregunta3.html',function () {
+        jQuery('.pregunta24').load('pregunta4.html',function () {
+          jQuery('.pregunta35').load('pregunta5.html',function () {
+            jQuery('.pregunta36').load('pregunta6.html',function () {
+              jQuery('.pregunta47').load('pregunta7.html',function () {
+                jQuery('.pregunta48').load('pregunta8.html',function () {
+                  jQuery('.pregunta49').load('pregunta9.html',function () {
                     loadScripts();
                   });
                 });
@@ -25,6 +25,7 @@ function loadScripts() {
   var arrayasp = [0,0,0,0];
   var arraypreg = [0,0,0,0,0,0,0,0,0];
   var arrayx = [0,0,0,0,0];
+  var ctx = document.getElementById("myChart").getContext('2d');
   //INICIO
   inicio();
   crear_preguntas();
@@ -35,6 +36,7 @@ function loadScripts() {
       jQuery('.empezar').click(function() {
         jQuery('.Instrucciones').hide(function() {
           mostrar_pregunta(1,1);
+          jQuery('.sig1').hide();
         }
       );
     })
@@ -52,16 +54,15 @@ function loadScripts() {
   }
 
   function crear_respuestas(pregunta,contpreg) {
-    var p = '#p';
     for (var i = 1; i <= 5; i++) {
+      var p = '#p';
       p=p+contpreg+i;
-      console.log(p);
       jQuery(p).click(function() {
-        // jQuery(this).css('background','azure');
         for(var j = 0;j < arrayx.length; j++) {
           if (jQuery(this).index() == j){
+            console.log(this);
             arrayx[j] = 1;
-            jQuery(this).css('background','azure');
+            jQuery(this).css('background','rgba(221, 29, 68, 0.4)');
           }
         }
         esconder(arrayx,contpreg);
@@ -69,25 +70,30 @@ function loadScripts() {
           arrayx[j] = 0;
         }
       })
-      p = '#p';
     }
   }
 
   function mostrar_pregunta(aspecto,num_pregunta) {
     var pre = '.pregunta';
-    console.log(aspecto);
+    // console.log(aspecto);
     jQuery('.nav_preguntas').show();
     if (aspecto == 1) {
       jQuery('#p_transversales').show();
+      jQuery('.preguntas_transversales').show();
+      jQuery('#tematica_t').addClass("resalto");
     }
     if (aspecto == 2) {
       jQuery('#p_economicas').show();
+      jQuery('.preguntas_economicas').show();
     }
     if (aspecto == 3) {
       jQuery('#p_sociales').show();
+      jQuery('.preguntas_sociales').show();
+
     }
     if (aspecto == 4) {
       jQuery('#p_ambientales').show();
+      jQuery('.preguntas_ambientales').show();
     }
     var preg = '.pregunta' + num_pregunta;
     var preg2 = '.pregunta' + aspecto + num_pregunta;
@@ -100,10 +106,10 @@ function loadScripts() {
 
   function esconder(r,cp) {
     // console.log(p);
-    var blankCheckbox = '#blankCheckbox';
-    var p = '#p';
     var a = 0;
     for (var i = 0; i < r.length; i++) {
+      var blankCheckbox = '#blankCheckbox';
+      var p = '#p';
       a++;
       blankCheckbox = blankCheckbox + cp + a;
       p = p + cp  + a;
@@ -112,11 +118,8 @@ function loadScripts() {
         jQuery(p).show().css('background','transparent');
       }
       else {
-        jQuery(blankCheckbox).show().css('background','azure');
+        jQuery(blankCheckbox).show();
       }
-      // console.log(blankCheckbox+''+r[i]+''+p);
-      blankCheckbox = '#blankCheckbox';
-      p = '#p';
     }
   }
     //FUNCION CLICK
@@ -131,6 +134,22 @@ function loadScripts() {
     // and the current value is retrieved using .prop() method
     jQuery(group).prop("checked", false);
     box.prop("checked", true);
+
+    var index = jQuery(this).attr('name');
+    var res = parseInt(index.slice(6, 7));
+
+    for (var i = 1; i <= 9; i++) {
+    var p = '.sig' + i;
+      if (res == i) {
+        jQuery(p).show();
+      }
+      else {
+        jQuery(p).hide();
+      }
+    }
+
+    console.log(res);
+
     } else {
       box.prop("checked", false);
     }
@@ -138,15 +157,19 @@ function loadScripts() {
 
   function esconder_todo() {
     jQuery('.nav_preguntas').hide();
+    jQuery('.preguntas_transversales').hide();
+    jQuery('.preguntas_economicas').hide();
+    jQuery('.preguntas_sociales').hide();
+    jQuery('.preguntas_ambientales').hide();
     jQuery('#p_transversales').hide();
     jQuery('#p_economicas').hide();
     jQuery('#p_social').hide();
     jQuery('#p_ambientales').hide();
+
     for(var j = 1;j <= arraypreg.length; j++) {
-      for (var i = 1; i <= 2; i++) {
+      for (var i = 1; i <= 9; i++) {
         var preg = '.pregunta'+j+i;
         jQuery(preg).hide();
-        // console.log(preg);
         }
     }
   }
@@ -154,46 +177,76 @@ function loadScripts() {
   function crear_logica() {
     for (var i = 1; i <= arraypreg.length; i++) {
       var p = '.sig' + i;
-      console.log(p);
-      if (i>=1 && i<=2) {
+      if (i<=1) {
         jQuery(p).on('click',function () {
           var n = jQuery(this).val();
           var val = parseInt(n.charAt(n.length-1)) + 1;
-          console.log(this);
           esconder_todo();
           mostrar_pregunta(1,val);
         });
       }
-      if (i>=3 && i<=4) {
+      if (i>=2 && i<=3) {
         jQuery(p).on('click',function () {
           var n = jQuery(this).val();
           var val = parseInt(n.charAt(n.length-1)) + 1;
-          console.log(this);
           esconder_todo();
           mostrar_pregunta(2,val);
         });
       }
-      if (i>=5 && i<=6) {
+      if (i>=4 && i<=5) {
         jQuery(p).on('click',function () {
           var n = jQuery(this).val();
           var val = parseInt(n.charAt(n.length-1)) + 1;
-          console.log(this);
           esconder_todo();
           mostrar_pregunta(3,val);
         });
       }
-      if (i>=7 && i<=9) {
+      if (i>5 && i <=8) {
         jQuery(p).on('click',function () {
           var n = jQuery(this).val();
           var val = parseInt(n.charAt(n.length-1)) + 1;
-          console.log(this);
           esconder_todo();
           mostrar_pregunta(4,val);
+        });
+      }
+      if (i>=9) {
+        jQuery(p).on('click',function () {
+          esconder_todo();
+          jQuery('#myChart').show();
         });
       }
 
     }
   }
 
-
+  var marksData = {
+    labels: ["Misión, visión, valores", "Responsabilidad sobre los productos y los servicios", "Sostenibilidad de la organización", "Practicas de aprovisionamiento", "Condiciones de trabajo", "Salud y seguridad ocupacional", "Gestión de materias primas y residuos.", "Gestión de la energía", "Gestión del impacto ambiental local"],
+    datasets: [{
+      label: "Auto-Diagnostico",
+      fill: false,
+      borderColor: "rgba(200,0,0,0.6)",
+      data: [5, 5, 1, 2, 3, 2, 5, 2, 1]
+    }]
+  };
+  var options = {
+    scale: {
+        ticks: {
+          beginAtZero: true,
+          min: 0,
+          max: 5,
+          stepSize: 1
+        },
+        pointLabels: {
+          fontSize: 18
+        }
+      },
+      legend: {
+        position: 'left'
+      }
+  };
+  var myRadarChart = new Chart(ctx, {
+      type: 'radar',
+      data: marksData,
+      options: options
+  });
 }

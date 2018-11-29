@@ -1,36 +1,33 @@
 li {
   list-style:none;
-}
-.nav_principal{
-  text-align: center;
-  margin:0px;
-  height:100%;
-}
-.navbar-brand{
-  margin:0px;
+  padding: 7px 0;
+  margin-left: 0;
+  margin-right: 0;
 }
 .text-center{
   text-align: center;
 }
-.preguntas_trans{
+.navbar-brand{
   text-align: center;
-  margin:0px;
-  height:100%;
+  margin-right: 0px !important;
 }
-.preguntas_trans .col-md-3{
-  border-style: solid;
-  border-color: transparent;
-}
-
-#tematica_t, .pregunta1, .pregunta2, .pregunta3, .pregunta4{
+#tematica_t, .pregunta1, .pregunta2{
   background-color: #dd1d44;
 }
-#tematica_e{
+#tematica_e, .pregunta3, .pregunta4{
   background-color: #4cc0ef;
 }
-#tematica_s{
+#tematica_s, .pregunta5, .pregunta6{
   background-color: #f69021;
 }
-#tematica_a{
+#tematica_a, .pregunta7, .pregunta8, .pregunta9{
   background-color: #73c570;
+}
+.radar{
+
+}
+.resalto{
+  border-radius: 20px;
+  transform: scale(1.1);
+  z-index: 10;
 }
