@@ -22,9 +22,9 @@ jQuery(document).ready(function() {
 })
 
 function loadScripts() {
-  var arrayasp = [0,0,0,0];
   var arraypreg = [0,0,0,0,0,0,0,0,0];
   var arrayx = [0,0,0,0,0];
+  var respuestas = [0,0,0,0,0,0,0,0,0];
   var ctx = document.getElementById("myChart").getContext('2d');
   //INICIO
   inicio();
@@ -62,7 +62,7 @@ function loadScripts() {
           if (jQuery(this).index() == j){
             console.log(this);
             arrayx[j] = 1;
-            jQuery(this).css('background','rgba(221, 29, 68, 0.4)');
+            jQuery(this).css('background','rgba(101, 101, 117, 0.4)');
           }
         }
         esconder(arrayx,contpreg);
@@ -82,18 +82,20 @@ function loadScripts() {
       jQuery('.preguntas_transversales').show();
       jQuery('#tematica_t').addClass("resalto");
     }
-    if (aspecto == 2) {
+    else if (aspecto == 2) {
       jQuery('#p_economicas').show();
       jQuery('.preguntas_economicas').show();
+      jQuery('#tematica_e').addClass("resalto");
     }
-    if (aspecto == 3) {
+    else if (aspecto == 3) {
       jQuery('#p_sociales').show();
       jQuery('.preguntas_sociales').show();
-
+      jQuery('#tematica_s').addClass("resalto");
     }
-    if (aspecto == 4) {
+    else if (aspecto == 4) {
       jQuery('#p_ambientales').show();
       jQuery('.preguntas_ambientales').show();
+      jQuery('#tematica_a').addClass("resalto");
     }
     var preg = '.pregunta' + num_pregunta;
     var preg2 = '.pregunta' + aspecto + num_pregunta;
@@ -122,7 +124,8 @@ function loadScripts() {
       }
     }
   }
-    //FUNCION CLICK
+
+    //FUNCION CLICK CHECKBOX
   jQuery("input:checkbox").on('click', function() {
     // in the handler, 'this' refers to the box clicked on
     var box = jQuery(this);
@@ -136,21 +139,21 @@ function loadScripts() {
     box.prop("checked", true);
 
     var index = jQuery(this).attr('name');
+    var resf = parseInt(jQuery(this).attr('value'));
     var res = parseInt(index.slice(6, 7));
 
-    for (var i = 1; i <= 9; i++) {
-    var p = '.sig' + i;
-      if (res == i) {
-        jQuery(p).show();
+      for (var i = 1; i <= 9; i++) {
+      var p = '.sig' + i;
+        if (res == i) {
+          jQuery(p).show();
+          res = res-1;
+          respuestas[res] = resf;
+        }
+        else {
+          jQuery(p).hide();
+        }
       }
-      else {
-        jQuery(p).hide();
-      }
-    }
-
-    console.log(res);
-
-    } else {
+      } else {
       box.prop("checked", false);
     }
   });
@@ -165,13 +168,26 @@ function loadScripts() {
     jQuery('#p_economicas').hide();
     jQuery('#p_social').hide();
     jQuery('#p_ambientales').hide();
+    jQuery('#tematica_t').removeClass("resalto");
+    jQuery('#tematica_e').removeClass("resalto");
+    jQuery('#tematica_s').removeClass("resalto");
+    jQuery('#tematica_a').removeClass("resalto");
 
     for(var j = 1;j <= arraypreg.length; j++) {
       for (var i = 1; i <= 9; i++) {
         var preg = '.pregunta'+j+i;
+        var pregx = '.pregunta'+j;
         jQuery(preg).hide();
+        jQuery(pregx).hide();
         }
     }
+  }
+
+  function formulario() {
+    esconder_todo();
+    jQuery('.nav_principal').hide();
+    jQuery('.cont-radar').hide();
+    jQuery('.email-d').show();
   }
 
   function crear_logica() {
@@ -212,7 +228,9 @@ function loadScripts() {
       if (i>=9) {
         jQuery(p).on('click',function () {
           esconder_todo();
-          jQuery('#myChart').show();
+          jQuery('.nav_principal').hide();
+          jQuery('.cont-radar').show();
+          setTimeout(formulario, 5000);
         });
       }
 
@@ -224,8 +242,8 @@ function loadScripts() {
     datasets: [{
       label: "Auto-Diagnostico",
       fill: false,
-      borderColor: "rgba(200,0,0,0.6)",
-      data: [5, 5, 1, 2, 3, 2, 5, 2, 1]
+      borderColor: "rgb(209, 204, 45)",
+      data: respuestas
     }]
   };
   var options = {
@@ -237,7 +255,7 @@ function loadScripts() {
           stepSize: 1
         },
         pointLabels: {
-          fontSize: 18
+          fontSize: 12
         }
       },
       legend: {

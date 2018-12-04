@@ -1,15 +1,27 @@
-li {
-  list-style:none;
-  padding: 7px 0;
+.contenido_principal ul li{
+  list-style:none !important;
+  padding: 7px;
   margin-left: 0;
   margin-right: 0;
+  border-radius: 11px;
+  cursor: pointer;
 }
-.text-center{
-  text-align: center;
-}
-.navbar-brand{
+.nav_principal .navbar-brand{
   text-align: center;
   margin-right: 0px !important;
+  word-break: break-all;
+  word-wrap: break-word;
+  color: white;
+}
+.nav_preguntas .navbar-brand{
+  text-align: center;
+  color: white;
+  border-radius: 10px;
+}
+.nav_preguntas{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 #tematica_t, .pregunta1, .pregunta2{
   background-color: #dd1d44;
@@ -23,11 +35,38 @@ li {
 #tematica_a, .pregunta7, .pregunta8, .pregunta9{
   background-color: #73c570;
 }
-.radar{
-
+#p_transversales h5{
+  color: #dd1d44;
+  text-align: justify;
+}
+#p_economicas h5{
+  text-align: justify;
+  color: #4cc0ef;
+}
+#p_sociales h5{
+  text-align: justify;
+  color: #f69021;
+}
+#p_ambientales h5{
+  text-align: justify;
+  color: #73c570;
 }
 .resalto{
   border-radius: 20px;
   transform: scale(1.1);
   z-index: 10;
+}
+#myChart{
+  height: 480px !important;
+  width: auto !important;
+}
+.cont-radar{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.email-d{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

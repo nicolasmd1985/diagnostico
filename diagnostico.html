@@ -6,37 +6,34 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title></title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="diagnostico.css">
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
+
 
 </head>
 
 <body>
   <!-- Barra de navegacion principal -->
-    <nav class="navbar nav_principal" role="navigation">
-      <div class="navbar-brand col-md-3 col-xs-1" id="tematica_t">Aspectos Transversales</div>
-      <div class="navbar-brand col-md-3 col-xs-1" id="tematica_e">Aspectos Economicas</div>
-      <div class="navbar-brand col-md-3 col-xs-1" id="tematica_s">Aspectos Sociales</div>
-      <div class="navbar-brand col-md-3 col-xs-1" id="tematica_a">Aspectos Ambientales</div>
-    </nav>
+  <nav class="navbar nav_principal" role="navigation">
+    <div class="navbar-brand col-md-3 col-xs-12" id="tematica_t">Aspectos Transversales</div>
+    <div class="navbar-brand col-md-3 col-xs-12" id="tematica_e">Aspectos Economicas</div>
+    <div class="navbar-brand col-md-3 col-xs-12" id="tematica_s">Aspectos Sociales</div>
+    <div class="navbar-brand col-md-3 col-xs-12" id="tematica_a">Aspectos Ambientales</div>
+  </nav>
 
   <!-- Instrucciones -->
   <div class="container">
     <div class="Instrucciones">
       <h1 class="text-center">Instrucciones de uso</h1>
-      <h4>El auto-diagnostico cuenta con una serie de aspectos los cuales deben ser contestadas a conciencia para obtener los mejores resultados para su empresa una vez finalice todas las preguntas aparecerá un botón de finalizado donde mostrara el
-        estado actual de su empresa</h4>
-        <div class="row justify-content-center">
-          <button type="button" name="button" class="empezar">Empezar</button>
-        </div>
+      <h4 style="text-align: justify; color: black;">En el autodiagnóstico podrás evaluar el estado de tu empresa en los diferentes retos de cada aspecto: Ambiental, económico, social y transversal. Selecciona el nivel en el cual ves identificada a tu empresa, una vez evalúes los 9 retos y pulses el botón Finalizar obtendrás una gráfica con el estado actual de tu empresa, esto te permitirá priorizar tus acciones</h4>
+      <center>
+        <button type="button" name="button" class="empezar">Empezar</button>
+      </center>
     </div>
   </div>
 
@@ -44,65 +41,72 @@
   <div class="container">
     <div class="nav_preguntas">
       <!-- Barra de navegacion preguntas -->
-      <nav class="navbar preguntas_transversales">
-        <div class="row justify-content-center">
-          <div class="navbar-brand col-md-3 pregunta1" style="display:none;">Misión, visión, valores</div>
-          <div class="navbar-brand col-md-3 pregunta2" style="display:none;">Responsabilidad sobre los productos y los servicios.</div>
-        </div>
+      <nav class="navbar preguntas_transversales d-flex justify-content-center">
+          <div class="navbar-brand pregunta1" style="display:none;">Misión, visión, valores</div>
+          <div class="navbar-brand pregunta2" style="display:none;">Responsabilidad sobre los productos y los servicios.</div>
       </nav>
       <!-- Barra de navegacion preguntas -->
-      <nav class="navbar preguntas_economicas">
-        <div class="row justify-content-center">
-          <div class="navbar-brand col-md-3 pregunta3" style="display:none;">Sostenibilidad de la organización</div>
-          <div class="navbar-brand col-md-3 pregunta4" style="display:none;">Practicas de aprovisionamiento</div>
-        </div>
-      </nav>
-      <!-- Barra de navegacion preguntas -->
-      <nav class="navbar preguntas_sociales">
-        <div class="row justify-content-center">
-          <div class="navbar-brand col-md-3 pregunta5" style="display:none;">Condiciones de trabajo</div>
-          <div class="navbar-brand col-md-3 pregunta6" style="display:none;">Salud y seguridad ocupacional</div>
-        </div>
-      </nav>
-      <!-- Barra de navegacion preguntas -->
-      <nav class="navbar preguntas_ambientales">
+      <nav class="navbar preguntas_economicas d-flex justify-content-center">
         <div class="row">
-          <div class="navbar-brand col-md-3 pregunta7" style="display:none;">Gestión de materias primas y residuos.</div>
-          <div class="navbar-brand col-md-3 pregunta8" style="display:none;">Gestión de la energía</div>
-          <div class="navbar-brand col-md-3 pregunta9" style="display:none;">Gestión del impacto ambiental local</div>
+          <div class="navbar-brand pregunta3" style="display:none;">Sostenibilidad de la organización</div>
+          <div class="navbar-brand pregunta4" style="display:none;">Practicas de aprovisionamiento</div>
+        </div>
+      </nav>
+      <!-- Barra de navegacion preguntas -->
+      <nav class="navbar preguntas_sociales d-flex justify-content-center">
+        <div class="row">
+          <div class="navbar-brand pregunta5" style="display:none;">Condiciones de trabajo</div>
+          <div class="navbar-brand pregunta6" style="display:none;">Salud y seguridad ocupacional</div>
+        </div>
+      </nav>
+      <!-- Barra de navegacion preguntas -->
+      <nav class="navbar preguntas_ambientales d-flex justify-content-center">
+        <div class="row">
+          <div class="navbar-brand pregunta7" style="display:none;">Gestión de materias primas y residuos.</div>
+          <div class="navbar-brand pregunta8" style="display:none;">Gestión de la energía</div>
+          <div class="navbar-brand pregunta9" style="display:none;">Gestión del impacto ambiental local</div>
         </div>
       </nav>
     </div>
   </div>
 
 
-  <!-- Container transversales -->
-  <div class="container transerversal" id="p_transversales">
-    <div class="container pregunta11" style="display:none;"></div>
-    <div class="container pregunta12" style="display:none;"></div>
-  </div>
-  <!-- Container transversales -->
-  <div class="container transerversal" id="p_economicas">
-    <div class="container pregunta23" style="display:none;"></div>
-    <div class="container pregunta24" style="display:none;"></div>
-  </div>
-  <!-- Container transversales -->
-  <div class="container transerversal" id="p_sociales">
-    <div class="container pregunta35" style="display:none;"></div>
-    <div class="container pregunta36" style="display:none;"></div>
-  </div>
-  <!-- Container transversales -->
-  <div class="container transerversal" id="p_ambientales">
-    <div class="container pregunta47" style="display:none;"></div>
-    <div class="container pregunta48" style="display:none;"></div>
-    <div class="container pregunta49" style="display:none;"></div>
+  <div class="contenido_principal">
+    <!-- Container transversales -->
+    <div class="container" id="p_transversales">
+      <div class="container pregunta11" style="display:none;"></div>
+      <div class="container pregunta12" style="display:none;"></div>
+    </div>
+    <!-- Container transversales -->
+    <div class="container" id="p_economicas">
+      <div class="container pregunta23" style="display:none;"></div>
+      <div class="container pregunta24" style="display:none;"></div>
+    </div>
+    <!-- Container transversales -->
+    <div class="container" id="p_sociales">
+      <div class="container pregunta35" style="display:none;"></div>
+      <div class="container pregunta36" style="display:none;"></div>
+    </div>
+    <!-- Container transversales -->
+    <div class="container" id="p_ambientales">
+      <div class="container pregunta47" style="display:none;"></div>
+      <div class="container pregunta48" style="display:none;"></div>
+      <div class="container pregunta49" style="display:none;"></div>
+    </div>
+
+    <div class="container cont-radar" style="display:none;">
+      <canvas id="myChart" class="radar"></canvas>
+    </div>
+    <div class="container email-d" style="display:none;">
+      <h4>Si deseas obtener acceso al diagnóstico completo, llena la siguiente información y pronto nos podremos en contacto contigo.</h4>
+      [contact-form-7 id="197" title="Contact form"]
+    </div>
   </div>
 
-  <div class="col-md-1-12">
-    <canvas id="myChart" class="radar"  style="display:none;"></canvas>
-  </div>
 
   <!-- Scripts de funciones -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
   <script src="functions.js" charset="utf-8"></script>
 </body>
 
