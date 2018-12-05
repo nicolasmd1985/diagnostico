@@ -192,17 +192,8 @@ function loadScripts() {
     jQuery('.nav_principal').hide();
     jQuery('.cont-radar').hide();
     jQuery('.email-d').show();
-    // url = "https://vignette.wikia.nocookie.net/mario-fanon/images/4/48/Paper_mario.png/revision/latest?cb=20131117112706&path-prefix=es";
-    // jQuery(elem).val(url);
-
-    // console.log(url);
   }
 
-    // var wpcf7Elm = document.getElementById( 'wpcf7-f197-o5' );
-    //
-    // wpcf7Elm.addEventListener( 'wpcf7submit', function( event ) {
-    //     alert( "Fire!" );
-    // }, true );
 
   function crear_logica() {
     for (var i = 1; i <= arraypreg.length; i++) {
@@ -253,11 +244,8 @@ function loadScripts() {
   }
 
   function done(){
-    // url = "https://vignette.wikia.nocookie.net/mario-fanon/images/4/48/Paper_mario.png/revision/latest?cb=20131117112706&path-prefix=es";
     url = myRadarChart.toBase64Image();
-    alert(url);
     jQuery(elem).val(url);
-    // alert('hola');
   }
 
   function radar() {
