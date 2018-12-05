@@ -25,12 +25,16 @@ function loadScripts() {
   var arraypreg = [0,0,0,0,0,0,0,0,0];
   var arrayx = [0,0,0,0,0];
   var respuestas = [0,0,0,0,0,0,0,0,0];
+  var url;
+  var myRadarChart;
   var ctx = document.getElementById("myChart").getContext('2d');
+  var elem = document.getElementById( 'grafid' );
   //INICIO
   inicio();
   crear_preguntas();
   esconder_todo();
   crear_logica();
+
 
   function inicio() {
       jQuery('.empezar').click(function() {
@@ -188,7 +192,17 @@ function loadScripts() {
     jQuery('.nav_principal').hide();
     jQuery('.cont-radar').hide();
     jQuery('.email-d').show();
+    // url = "https://vignette.wikia.nocookie.net/mario-fanon/images/4/48/Paper_mario.png/revision/latest?cb=20131117112706&path-prefix=es";
+    // jQuery(elem).val(url);
+
+    // console.log(url);
   }
+
+    // var wpcf7Elm = document.getElementById( 'wpcf7-f197-o5' );
+    //
+    // wpcf7Elm.addEventListener( 'wpcf7submit', function( event ) {
+    //     alert( "Fire!" );
+    // }, true );
 
   function crear_logica() {
     for (var i = 1; i <= arraypreg.length; i++) {
@@ -228,6 +242,7 @@ function loadScripts() {
       if (i>=9) {
         jQuery(p).on('click',function () {
           esconder_todo();
+          radar();
           jQuery('.nav_principal').hide();
           jQuery('.cont-radar').show();
           setTimeout(formulario, 5000);
@@ -237,34 +252,50 @@ function loadScripts() {
     }
   }
 
-  var marksData = {
-    labels: ["Misión, visión, valores", "Responsabilidad sobre los productos y los servicios", "Sostenibilidad de la organización", "Practicas de aprovisionamiento", "Condiciones de trabajo", "Salud y seguridad ocupacional", "Gestión de materias primas y residuos.", "Gestión de la energía", "Gestión del impacto ambiental local"],
-    datasets: [{
-      label: "Auto-Diagnostico",
-      fill: false,
-      borderColor: "rgb(209, 204, 45)",
-      data: respuestas
-    }]
-  };
-  var options = {
-    scale: {
-        ticks: {
-          beginAtZero: true,
-          min: 0,
-          max: 5,
-          stepSize: 1
+  function done(){
+    // url = "https://vignette.wikia.nocookie.net/mario-fanon/images/4/48/Paper_mario.png/revision/latest?cb=20131117112706&path-prefix=es";
+    url = myRadarChart.toBase64Image();
+    alert(url);
+    jQuery(elem).val(url);
+    // alert('hola');
+  }
+
+  function radar() {
+    var marksData = {
+      labels: ["Misión, visión, valores", "Responsabilidad sobre los productos y los servicios", "Sostenibilidad de la organización", "Practicas de aprovisionamiento", "Condiciones de trabajo", "Salud y seguridad ocupacional", "Gestión de materias primas y residuos.", "Gestión de la energía", "Gestión del impacto ambiental local"],
+      datasets: [{
+        label: "Auto-Diagnostico",
+        fill: false,
+        borderColor: "rgb(209, 204, 45)",
+        data: respuestas
+      }]
+    };
+    var options = {
+      scale: {
+          ticks: {
+            beginAtZero: true,
+            min: 0,
+            max: 5,
+            stepSize: 1
+          },
+          pointLabels: {
+            fontSize: 12
+          }
         },
-        pointLabels: {
-          fontSize: 12
+        legend: {
+          position: 'left'
+        },
+        animation : {
+          onComplete : done
         }
-      },
-      legend: {
-        position: 'left'
-      }
-  };
-  var myRadarChart = new Chart(ctx, {
-      type: 'radar',
-      data: marksData,
-      options: options
-  });
+    };
+    myRadarChart = new Chart(ctx, {
+        type: 'radar',
+        data: marksData,
+        options: options
+    });
+
+  }
+
+
 }
