@@ -69,4 +69,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border: solid;
+  padding: 24px;
+}
+.diagmail{
+  margin-top: 30px;
+}
+#wpcf7-f7-o5 .wpcf7-text{
+  border: solid;
+}
+#wpcf7-f7-o5 .wpcf7-textarea{
+  border: solid;
+  height: 110px;
+}
+#wpcf7-f7-o5 .mensaje{
+  width: 100%;
+}
+
+#wpcf7-f7-o5 .wpcf7-submit{
+  margin-top: 13px;
 }

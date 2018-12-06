@@ -191,6 +191,7 @@ function loadScripts() {
     esconder_todo();
     jQuery('.nav_principal').hide();
     jQuery('.cont-radar').hide();
+    jQuery(elem).val(url);
     jQuery('.email-d').show();
   }
 
@@ -245,7 +246,6 @@ function loadScripts() {
 
   function done(){
     url = myRadarChart.toBase64Image();
-    jQuery(elem).val(url);
   }
 
   function radar() {
@@ -255,6 +255,7 @@ function loadScripts() {
         label: "Auto-Diagnostico",
         fill: false,
         borderColor: "rgb(209, 204, 45)",
+        backgroundColor: "#fff",
         data: respuestas
       }]
     };
@@ -264,7 +265,8 @@ function loadScripts() {
             beginAtZero: true,
             min: 0,
             max: 5,
-            stepSize: 1
+            stepSize: 1,
+            fontColor : "#fff"
           },
           pointLabels: {
             fontSize: 12
