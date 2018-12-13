@@ -35,7 +35,6 @@ function loadScripts() {
   esconder_todo();
   crear_logica();
 
-
   function inicio() {
       jQuery('.empezar').click(function() {
         jQuery('.Instrucciones').hide(function() {
@@ -64,7 +63,7 @@ function loadScripts() {
       jQuery(p).click(function() {
         for(var j = 0;j < arrayx.length; j++) {
           if (jQuery(this).index() == j){
-            console.log(this);
+            // console.log(this);
             arrayx[j] = 1;
             jQuery(this).css('background','rgba(101, 101, 117, 0.4)');
           }
@@ -104,7 +103,7 @@ function loadScripts() {
     var preg = '.pregunta' + num_pregunta;
     var preg2 = '.pregunta' + aspecto + num_pregunta;
     var p = '#p'+num_pregunta+1;
-    console.log(p+''+preg+''+preg2);
+    // console.log(p+''+preg+''+preg2);
     jQuery(p).trigger('click');
     jQuery(preg).show();
     jQuery(preg2).show();
@@ -237,12 +236,16 @@ function loadScripts() {
           radar();
           jQuery('.nav_principal').hide();
           jQuery('.cont-radar').show();
-          setTimeout(formulario, 5000);
         });
       }
 
     }
   }
+
+  jQuery('.formulario').on('click',function () {
+    formulario();
+  });
+
 
   function done(){
     url = myRadarChart.toBase64Image();
@@ -250,7 +253,8 @@ function loadScripts() {
 
   function radar() {
     var marksData = {
-      labels: ["Misión, visión, valores", "Responsabilidad sobre los productos y los servicios", "Sostenibilidad de la organización", "Practicas de aprovisionamiento", "Condiciones de trabajo", "Salud y seguridad ocupacional", "Gestión de materias primas y residuos.", "Gestión de la energía", "Gestión del impacto ambiental local"],
+      // labels: ["Misión, visión, valores", "Responsabilidad sobre los productos y los servicios", "Sostenibilidad de la organización", "Practicas de aprovisionamiento", "Condiciones de trabajo", "Salud y seguridad ocupacional", "Gestión de materias primas y residuos.", "Gestión de la energía", "Gestión del impacto ambiental local"],
+      labels: ["A", "B", "C", "D", "E", "F", "G", "H", "I"],
       datasets: [{
         label: "Auto-Diagnostico",
         fill: false,
@@ -265,15 +269,14 @@ function loadScripts() {
             beginAtZero: true,
             min: 0,
             max: 5,
-            stepSize: 1,
-            fontColor : "#fff"
+            stepSize: 1
           },
           pointLabels: {
-            fontSize: 12
+            fontSize: 10
           }
         },
         legend: {
-          position: 'left'
+          position: 'center'
         },
         animation : {
           onComplete : done
